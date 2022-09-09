@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     CheckBox cb;
     Button btnSeen;
     Spinner spinner;
-    String gender = "Male";
+    String gender = "Good";
     AppDatabase db;
 
     @Override
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initGender() {
-        String[] listGender = {"Male", "Female", "Unknown"};
+        String[] listGender = {"Good", "Bad", "VipPro"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item,
                 listGender);
@@ -53,7 +53,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
             }
         });
     }
@@ -61,11 +60,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btnSeen:
-                onSeen();
-                break;
-            default:
-                break;
+            case R.id.btnSeen: onSeen();
+            break;
+            default: break;
         }
     }
     private void onSeen() {
@@ -79,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         user.gender = gender;
         long id = db.userDao().insertUser(user);
         if (id > 0) {
-            Toast.makeText(this, "Success !!!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Successful !!!", Toast.LENGTH_SHORT).show();
         }
         makeTotal();
     }
@@ -103,5 +100,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         return true;
     }
-
 }

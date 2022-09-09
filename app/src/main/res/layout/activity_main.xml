@@ -71,7 +71,6 @@
             android:layout_height="wrap_content"
             android:text="Would you like an email response?"
             android:textColor="@color/white"
-
             />
         <Button
             android:id="@+id/btnSeen"
@@ -83,7 +82,6 @@
             android:textColor="@color/black"
             android:layout_gravity="center"
             android:textAllCaps="false"
-
             />
     </LinearLayout>
 </LinearLayout>
