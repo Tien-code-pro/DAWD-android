@@ -54,7 +54,7 @@
             android:background="@color/white"
             />
         <EditText
-            android:id="@+id/edDes"
+            android:id="@+id/edDescription"
             android:textSize="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -65,7 +65,7 @@
             android:layout_marginTop="10dp"
             />
         <CheckBox
-            android:id="@+id/cb"
+            android:id="@+id/checkbox"
             android:textSize="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -73,7 +73,7 @@
             android:textColor="@color/white"
             />
         <Button
-            android:id="@+id/btnSeen"
+            android:id="@+id/btnSeenFeedback"
             android:textSize="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

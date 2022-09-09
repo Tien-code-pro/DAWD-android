@@ -17,9 +17,9 @@ import com.example.luongminhtien.database.AppDatabase;
 import com.example.luongminhtien.database.User;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    EditText edUsername, edEmail, edDes;
-    CheckBox cb;
-    Button btnSeen;
+    EditText edUsername, edEmail, edDescription;
+    CheckBox checkbox;
+    Button btnSeenFeedback;
     Spinner spinner;
     String gender = "Good";
     AppDatabase db;
@@ -30,20 +30,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         edUsername = findViewById(R.id.edUsername);
         edEmail = findViewById(R.id.edEmail);
-        edDes = findViewById(R.id.edDes);
-        cb = findViewById(R.id.cb);
-        btnSeen = findViewById(R.id.btnSeen);
+        edDescription = findViewById(R.id.edDescription);
+        checkbox = findViewById(R.id.checkbox);
+        btnSeenFeedback = findViewById(R.id.btnSeenFeedback);
         spinner = findViewById(R.id.spGender);
         db = AppDatabase.getAppDatabase(this);
-        btnSeen.setOnClickListener(this);
+        btnSeenFeedback.setOnClickListener(this);
         initGender();
     }
 
     private void initGender() {
         String[] listGender = {"Good", "Bad", "VipPro"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item,
-                listGender);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listGender);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -60,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btnSeen: onSeen();
+            case R.id.btnSeenFeedback : onSeen();
             break;
             default: break;
         }
@@ -72,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         User user = new User();
         user.username = edUsername.getText().toString();
         user.email = edEmail.getText().toString();
-        user.des = edDes.getText().toString();
+        user.des = edDescription.getText().toString();
         user.gender = gender;
         long id = db.userDao().insertUser(user);
         if (id > 0) {
@@ -91,7 +89,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             mess = "Username is empty !!!";
         } else if (edEmail.getText().toString().trim().isEmpty()) {
             mess = "Email is empty !!!";
-        } else if (edDes.getText().toString().trim().isEmpty()) {
+        } else if (edDescription.getText().toString().trim().isEmpty()) {
             mess = "Description is empty !!!";
         }
         if (mess != null) {
