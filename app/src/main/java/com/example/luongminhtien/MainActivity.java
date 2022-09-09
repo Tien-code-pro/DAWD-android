@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         edUsername = findViewById(R.id.edUsername);
         edEmail = findViewById(R.id.edEmail);
         edDes = findViewById(R.id.edDes);
@@ -37,14 +36,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         spinner = findViewById(R.id.spGender);
         db = AppDatabase.getAppDatabase(this);
         btnSeen.setOnClickListener(this);
-
         initGender();
     }
 
     private void initGender() {
-
         String[] listGender = {"Male", "Female", "Unknown"};
-
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item,
                 listGender);
@@ -55,7 +51,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Log.d("TAG", "onItemClick: " + listGender[position]);
                 gender = listGender[position];
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
@@ -69,12 +64,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btnSeen:
                 onSeen();
                 break;
-
             default:
                 break;
         }
     }
-
     private void onSeen() {
         if (!validate()) {
             return;
@@ -86,10 +79,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         user.gender = gender;
         long id = db.userDao().insertUser(user);
         if (id > 0) {
-            Toast.makeText(this, "Success!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Success !!!", Toast.LENGTH_SHORT).show();
         }
         makeTotal();
-
     }
 
     private void makeTotal() {
@@ -99,11 +91,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private boolean validate() {
         String mess = null;
         if (edUsername.getText().toString().trim().isEmpty()) {
-            mess = "Username is empty!";
+            mess = "Username is empty !!!";
         } else if (edEmail.getText().toString().trim().isEmpty()) {
-            mess = "Email is empty!";
+            mess = "Email is empty !!!";
         } else if (edDes.getText().toString().trim().isEmpty()) {
-            mess = "Description is empty!";
+            mess = "Description is empty !!!";
         }
         if (mess != null) {
             Toast.makeText(this, mess, Toast.LENGTH_SHORT).show();
